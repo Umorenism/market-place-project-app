@@ -1,24 +1,20 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import React from 'react';
+import { createStackNavigator, TransitionPresets } from '@react-navigation/stack';
 
-import { createStackNavigator, TransitionPresets } from '@react-navigation/stack'; // ✅ Correct imports
-import HomeScreen from '../../tabs/home/HomeScreen';
 import AirdropScreen from '../../tabs/airdrop/AirdropScreen';
 
+const Stack = createStackNavigator();
 
-const Stack = createStackNavigator()
-
-export default function AirdropNavigattion() {
+export default function HomeNavigation() {
   return (
-
-         <Stack.Navigator screenOptions={{
-        headerShown:false,
+    <Stack.Navigator
+      screenOptions={{
+        headerShown: false,
         ...TransitionPresets.SlideFromLeftIOS,
-        animationEnable:true,
-        gestureEnabled:true,
-        gestureDirection:true
-         }}>
-      <Stack.Screen name='airdrop' component={<AirdropScreen/>}/>
-         </Stack.Navigator>
-  )
+        
+      }}
+    >
+      <Stack.Screen name="home" component={AirdropScreen} />
+    </Stack.Navigator>
+  );
 }

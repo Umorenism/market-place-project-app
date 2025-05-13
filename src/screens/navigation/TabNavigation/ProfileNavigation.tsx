@@ -1,23 +1,22 @@
+import React from 'react';
+import { createStackNavigator, TransitionPresets } from '@react-navigation/stack';
 
-import React from 'react'
+import ProfileScreen from '../../tabs/profile/ProfileScreen';
 
-import { createStackNavigator, TransitionPresets } from '@react-navigation/stack'; // ✅ Correct imports
-import HomeScreen from '../../tabs/home/HomeScreen';
-
-
-const Stack = createStackNavigator()
+const Stack = createStackNavigator();
 
 export default function ProfileNavigation() {
   return (
-
-         <Stack.Navigator screenOptions={{
-        headerShown:false,
+    <Stack.Navigator
+      screenOptions={{
+        headerShown: false,
         ...TransitionPresets.SlideFromLeftIOS,
-        animationEnable:true,
-        gestureEnabled:true,
-        gestureDirection:true
-         }}>
-      <Stack.Screen name='profile' component={<ProfileNavigation/>}/>
-         </Stack.Navigator>
-  )
+       
+        gestureEnabled: true,
+        gestureDirection: 'horizontal',
+      }}
+    >
+      <Stack.Screen name="home" component={ProfileScreen} />
+    </Stack.Navigator>
+  );
 }
