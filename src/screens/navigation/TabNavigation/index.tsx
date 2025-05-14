@@ -1,7 +1,6 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Ionicons } from "@expo/vector-icons"; // For tab icons
-import { TransitionPresets } from "@react-navigation/stack"; // Import TransitionPresets for stack navigation
+import { Ionicons } from "@expo/vector-icons";
 import HomeNavigation from "./HomeNavigation";
 import DisCoveryNavigation from "./DisCoveryNavigation";
 import CreateNavigation from "./CreateNavigation";
@@ -34,18 +33,23 @@ export default function TabNavigation() {
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
-        // Tab bar icon configuration
         tabBarIcon: ({ focused }) => getTabBarIcon(route.name, focused),
-
-        headerShown: false, // Optionally hide headers on each tab
-
+        headerShown: false,
         tabBarStyle: {
+          backgroundColor: "#ffffff", // Set your desired background color here
           borderTopWidth: 0,
+          elevation: 5, // Android shadow
+          shadowColor: "#000", // iOS shadow
+          shadowOffset: { width: 0, height: -2 },
+          shadowOpacity: 0.05,
+          shadowRadius: 6,
+          height: 60,
         },
-        tabBarActiveTintColor: "#1e1e1e", // Active icon color
-        tabBarInactiveTintColor: "#777", // Inactive icon color
+        tabBarActiveTintColor: "#1e1e1e",
+        tabBarInactiveTintColor: "#777",
         tabBarLabelStyle: {
-          fontSize: 12, // Label style
+          fontSize: 12,
+          marginBottom: 5,
         },
       })}
     >
