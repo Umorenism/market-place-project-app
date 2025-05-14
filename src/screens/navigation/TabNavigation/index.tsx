@@ -36,7 +36,7 @@ export default function TabNavigation() {
         tabBarIcon: ({ focused }) => getTabBarIcon(route.name, focused),
         headerShown: false,
         tabBarStyle: {
-          backgroundColor: "#ffffff", // Set your desired background color here
+          backgroundColor: "#030D17", // Set your desired background color here
           borderTopWidth: 0,
           elevation: 5, // Android shadow
           shadowColor: "#000", // iOS shadow

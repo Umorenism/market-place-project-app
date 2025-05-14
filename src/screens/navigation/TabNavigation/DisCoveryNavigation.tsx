@@ -11,6 +11,7 @@ export default function DisCoveryNavigation() {
      screenOptions={{
                headerStyle: { backgroundColor: '#1e1e1e' },
                headerTintColor: '#fff',
+               headerShown:false,
                cardStyle: { backgroundColor: '#121212' },
                ...TransitionPresets.SlideFromRightIOS, // ✅ Apply transition
                gestureEnabled: true,
