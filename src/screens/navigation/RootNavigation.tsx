@@ -4,11 +4,14 @@ import { createStackNavigator, TransitionPresets } from '@react-navigation/stack
 
 import AuthNavigation from './AuthNavigation';
 import AppNavigation from './AppNavigation';
+import { useAuth } from '@/AuthProvider';
 
 const Stack = createStackNavigator();
 
 export default function RootNavigation() {
-  const [session, setSession] = useState(false); // Toggle to false to test auth flow
+  // const [session, setSession] = useState(false); // Toggle to false to test auth flow
+
+  const { isAuthenticated } = useAuth();
 
   return (
     <NavigationContainer>
@@ -23,7 +26,7 @@ export default function RootNavigation() {
           gestureDirection: 'horizontal',
         }}
       >
-        {session ? (
+        {isAuthenticated ? (
         <Stack.Screen name="main" component={AppNavigation} />
         ) : (
           <Stack.Screen name="GoogleAuth" component={AuthNavigation} />

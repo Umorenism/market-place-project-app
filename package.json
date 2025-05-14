@@ -45,7 +45,9 @@
     "react-native-webview": "13.13.5",
     "react-navigation": "^4.4.4",
     "react-navigation-stack": "^2.10.4",
-    "styled-components": "^6.1.18"
+    "styled-components": "^6.1.18",
+    "expo-auth-session": "~6.1.5",
+    "expo-linear-gradient": "~14.1.4"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
