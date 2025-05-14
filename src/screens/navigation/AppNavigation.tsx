@@ -1,10 +1,23 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import React from 'react';
+ import { createStackNavigator, TransitionPresets } from '@react-navigation/stack'; // ✅ Correct imports
+ 
+import TabNavigation from './TabNavigation'; // Bottom tabs with Home, Profile, etc.
+
+const Stack = createStackNavigator();
 
 export default function AppNavigation() {
   return (
-    <View>
-      <Text>AppNavigation</Text>
-    </View>
-  )
+    <Stack.Navigator  screenOptions={{
+              headerStyle: { backgroundColor: '#1e1e1e' },
+              headerTintColor: '#fff',
+              headerShown:false,
+              cardStyle: { backgroundColor: '#121212' },
+              ...TransitionPresets.SlideFromRightIOS, // ✅ Apply transition
+              gestureEnabled: true,
+              gestureDirection: 'horizontal',
+            }}>
+      <Stack.Screen name="Tabs" component={TabNavigation} />
+      {/* Add more app-specific screens here if needed */}
+    </Stack.Navigator>
+  );
 }

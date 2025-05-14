@@ -7,11 +7,15 @@ const Stack = createStackNavigator();
 export default function HomeNavigation() {
   return (
     <Stack.Navigator
-      screenOptions={{
-        headerShown: false,
-        ...TransitionPresets.SlideFromLeftIOS,
-        gestureDirection: 'horizontal',
-      }}
+     screenOptions={{
+               headerStyle: { backgroundColor: '#1e1e1e' },
+               headerTintColor: '#fff',
+               headerShown:false,
+               cardStyle: { backgroundColor: '#121212' },
+               ...TransitionPresets.SlideFromRightIOS, // ✅ Apply transition
+               gestureEnabled: true,
+               gestureDirection: 'horizontal',
+             }}
     >
       <Stack.Screen name="home" component={HomeScreen} />
     </Stack.Navigator>

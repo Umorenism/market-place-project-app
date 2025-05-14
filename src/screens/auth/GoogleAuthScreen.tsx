@@ -1,15 +1,15 @@
 import React from 'react';
-import { View, Text, Button } from 'react-native';
+import { Image, TouchableOpacity } from 'react-native';
+import styled from 'styled-components/native';
 import { useNavigation } from '@react-navigation/native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { AntDesign } from '@expo/vector-icons';
 
-// 1. Define your stack params
 type RootStackParamList = {
   Auth: undefined;
-  Main: undefined; // or 'Home', 'Dashboard', etc.
+  Main: undefined;
 };
 
-// 2. Type the navigation
 type GoogleAuthScreenNavigationProp = NativeStackNavigationProp<
   RootStackParamList,
   'Auth'
@@ -19,17 +19,62 @@ export default function GoogleAuthScreen() {
   const navigation = useNavigation<GoogleAuthScreenNavigationProp>();
 
   const handleSignup = () => {
-    // Simulate Google signup logic
     console.log('User signed in ✅');
-
-    // Navigate to the home screen or main app
-    navigation.navigate('Main'); // or 'Home' if that's your route name
+    navigation.navigate('Main');
   };
 
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>GoogleAuthScreen</Text>
-      <Button title="Sign in with Google" onPress={handleSignup} />
-    </View>
+    <Container>
+      <Content>
+        <Logo source={require('../../../assets/images/icon.png')} resizeMode="contain" />
+        <Title>Welcome to Our App</Title>
+        <GoogleButton onPress={handleSignup}>
+          <AntDesign name="google" size={24} color="#fff" />
+          <ButtonText>Sign in with Google</ButtonText>
+        </GoogleButton>
+      </Content>
+    </Container>
   );
 }
+
+const Container = styled.SafeAreaView`
+  flex: 1;
+  background-color: #ffffff;
+`;
+
+const Content = styled.ScrollView.attrs(() => ({
+  contentContainerStyle: {
+    flexGrow: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 20,
+  },
+}))``;
+
+const Logo = styled.Image`
+  width: 120px;
+  height: 120px;
+  margin-bottom: 20px;
+`;
+
+const Title = styled.Text`
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 30px;
+  text-align: center;
+`;
+
+const GoogleButton = styled(TouchableOpacity)`
+  flex-direction: row;
+  align-items: center;
+  background-color: #4285f4;
+  padding: 12px 20px;
+  border-radius: 6px;
+`;
+
+const ButtonText = styled.Text`
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 500;
+  margin-left: 10px;
+`;

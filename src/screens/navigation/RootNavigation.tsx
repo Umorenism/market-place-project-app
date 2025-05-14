@@ -3,12 +3,12 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator, TransitionPresets } from '@react-navigation/stack'; // ✅ Correct imports
 
 import AuthNavigation from './AuthNavigation';
-import TabNavigation from './TabNavigation';
+import AppNavigation from './AppNavigation';
 
 const Stack = createStackNavigator();
 
 export default function RootNavigation() {
-  const [session, setSession] = useState(true); // Toggle to false to test auth flow
+  const [session, setSession] = useState(false); // Toggle to false to test auth flow
 
   return (
     <NavigationContainer>
@@ -16,6 +16,7 @@ export default function RootNavigation() {
         screenOptions={{
           headerStyle: { backgroundColor: '#1e1e1e' },
           headerTintColor: '#fff',
+         headerShown:false, // 👈 Hide header if not needed
           cardStyle: { backgroundColor: '#121212' },
           ...TransitionPresets.SlideFromRightIOS, // ✅ Apply transition
           gestureEnabled: true,
@@ -23,9 +24,9 @@ export default function RootNavigation() {
         }}
       >
         {session ? (
-          <Stack.Screen name="Main" component={TabNavigation} />
+        <Stack.Screen name="main" component={AppNavigation} />
         ) : (
-          <Stack.Screen name="Auth" component={AuthNavigation} />
+          <Stack.Screen name="GoogleAuth" component={AuthNavigation} />
         )}
       </Stack.Navigator>
     </NavigationContainer>
